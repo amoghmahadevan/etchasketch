@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: orange;
+}
+.title{
+    font-family: 'Jost', sans-serif;
+    font-size: 48px;
+    margin-bottom: 50px;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.square{
+    flex: 1;
+    background-color: white;
+    border: 1px solid black;
+}
