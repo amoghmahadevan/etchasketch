@@ -7,4 +7,4 @@ Events - Adding functions like click and mouseover to buttons and tiles
 JS Implementation Skills  
   
 Future Plans:  
-Randomized RGB Coloring and Grid Size Slider
+Randomized RGB Coloring (Done), Erase Button (Done), Grid Size Slider

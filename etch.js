@@ -25,18 +25,29 @@ function generateGrid(size){
             rowselect.appendChild(square);
         }
     }
-    const squareSelector = document.querySelectorAll('.square');
-    for(let i = 0; i < squareSelector.length; i++){
-        squareSelector[i].addEventListener('mouseover', function(){
-            squareSelector[i].style.backgroundColor = "black";
-        });
+    if(erasebtn.value == "false"){
+        const squareSelector = document.querySelectorAll('.square');
+        for(let i = 0; i < squareSelector.length; i++){
+            squareSelector[i].addEventListener('mouseover', function(){
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                squareSelector[i].style.backgroundColor = "#" + randomColor;
+            });
+        }
+    }
+    else{
+        const whiteSelector = document.querySelectorAll('.square');
+        for(let i = 0; i < whiteSelector.length; i++){
+            whiteSelector[i].addEventListener('mouseover', function(){
+                whiteSelector[i].style.backgroundColor = "white";
+            });
+        }
     }
 }
 
 function promptSize(){
     let size;
     do{
-     size = parseInt(prompt("Input the size of the grid: ", 16));
+     size = parseInt(prompt("Input a size for the grid between 1 and 100: ", 16));
      if(isNaN(size) || size > 100 || size < 1){
         alert("Number must be between 1 and 100");
      }
@@ -58,4 +69,32 @@ function changeGridSize(){
 const changebtn = document.querySelector('.change');
 changebtn.addEventListener('click', changeGridSize);
 
+function changeEraseMode(){
+    if(this.value == "false"){
+        this.value = "true";
+        this.textContent = "Erase: ON";
+        this.style.backgroundColor = "red";
+        const whiteSelector = document.querySelectorAll('.square');
+        for(let i = 0; i < whiteSelector.length; i++){
+            whiteSelector[i].addEventListener('mouseover', function(){
+                whiteSelector[i].style.backgroundColor = "white";
+            });
+        }
+    }
+    else{
+        this.value = "false";
+        this.textContent = "Erase: OFF";
+        this.style.backgroundColor = "white";
+        const squareSelector = document.querySelectorAll('.square');
+        for(let i = 0; i < squareSelector.length; i++){
+            squareSelector[i].addEventListener('mouseover', function(){
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                squareSelector[i].style.backgroundColor = "#" + randomColor;
+            });
+        }
+    }
+}
+
+const erasebtn = document.querySelector('.erase');
+erasebtn.addEventListener('click', changeEraseMode);
 promptSize();
